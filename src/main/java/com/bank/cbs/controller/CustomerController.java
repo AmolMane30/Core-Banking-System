@@ -1,5 +1,8 @@
 package com.bank.cbs.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.*;
 
 import com.bank.cbs.dto.CustomerRequestDTO;
 import com.bank.cbs.entity.Customer;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/customer")
 public class CustomerController {

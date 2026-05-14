@@ -1,5 +1,9 @@
 package com.bank.cbs.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.*;
+
 import com.bank.cbs.dto.TransactionRequestDTO;
 import com.bank.cbs.entity.Transaction;
 import com.bank.cbs.repository.TransactionRepository;
@@ -9,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/transaction")
 public class TransactionController {
