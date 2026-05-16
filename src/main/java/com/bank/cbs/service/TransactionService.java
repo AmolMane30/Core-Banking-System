@@ -1,6 +1,8 @@
 package com.bank.cbs.service;
 
-import com.bank.cbs.dto.TransactionRequestDTO;
+import com.bank.cbs.dto.DepositRequestDTO;
+import com.bank.cbs.dto.TransferRequestDTO;
+import com.bank.cbs.dto.WithdrawRequestDTO;
 import com.bank.cbs.entity.Account;
 import com.bank.cbs.entity.Transaction;
 import com.bank.cbs.repository.AccountRepository;
@@ -19,7 +21,7 @@ public class TransactionService {
     @Autowired
     private TransactionRepository transactionRepo;
 
-    public Transaction deposit(TransactionRequestDTO dto) {
+    public Transaction deposit(DepositRequestDTO dto) {
 
         Account account = accountRepo.findById(dto.getAccountId()).orElseThrow();
 
@@ -37,7 +39,7 @@ public class TransactionService {
         return transactionRepo.save(txn);
     }
 
-    public Transaction withdraw(TransactionRequestDTO dto)
+    public Transaction withdraw(WithdrawRequestDTO dto)
     {
         Account account = accountRepo.findById(dto.getAccountId()).orElseThrow();
 
@@ -61,7 +63,7 @@ public class TransactionService {
         return transactionRepo.save(txn);
     }
 
-    public String transfer(TransactionRequestDTO dto)
+    public String transfer(TransferRequestDTO dto)
     {
         Account fromAccount = accountRepo.findById(dto.getAccountId()).orElseThrow();
         Account toAccount = accountRepo.findById(dto.getToAccountId()).orElseThrow();

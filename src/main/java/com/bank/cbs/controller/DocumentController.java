@@ -21,7 +21,11 @@ public class DocumentController {
     @Autowired
     private DocumentService service;
 
-    @PostMapping("/upload")
+    @PostMapping(
+            value = "/upload",
+            consumes = "multipart/form-data"
+    )
+
     public Document uploadDocument(
             @RequestParam Long customerId,
             @RequestParam String docType,
