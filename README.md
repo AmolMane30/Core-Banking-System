@@ -88,7 +88,24 @@ The system follows layered architecture and is designed to simulate a real banki
                                    |
                                    v
                           OCR / KYC Verification
+                                                                  
 ```
+
+---
+
+# 🏗️ Architecture Diagram
+
+![Architecture Diagram](docs/architecture-diagram.png)
+
+---
+# 🗄️ ER Diagram
+
+![ER Diagram](docs/er-diagram.png)
+
+---
+# 🔄 Sequence Diagram
+
+![Sequence Diagram](docs/sequence-diagram.png)
 
 ---
 
