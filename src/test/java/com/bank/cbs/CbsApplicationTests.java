@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class CbsApplicationTests {
 
     @Test
-    void contextLoads() {
+    void contextLoads() {       // test all the dependencies and configurations when spring boot app is started
     }
 
 }

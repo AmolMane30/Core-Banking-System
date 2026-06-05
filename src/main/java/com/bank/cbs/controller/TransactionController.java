@@ -3,6 +3,7 @@ package com.bank.cbs.controller;
 import com.bank.cbs.dto.DepositRequestDTO;
 import com.bank.cbs.dto.TransferRequestDTO;
 import com.bank.cbs.dto.WithdrawRequestDTO;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.With;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,6 +18,7 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/transaction")
+@Tag(name = "transaction", description = "Operations related to transactions")
 public class TransactionController {
 
     @Autowired
