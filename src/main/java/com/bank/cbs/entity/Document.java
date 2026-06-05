@@ -15,7 +15,8 @@ public class Document {
 
     private String docType; // AADHAAR / PAN
     private String fileName;
-    private String filePath;
+    private String fileUrl;
+    private String publicId;
 
     @ManyToOne
     @JoinColumn(name = "customer_id")

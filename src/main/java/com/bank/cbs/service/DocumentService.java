@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class DocumentService {
@@ -21,34 +21,25 @@ public class DocumentService {
     @Autowired
     private CustomerRepository customerRepo;
 
-    private final String uploadDir = "uploads/";
+    @Autowired
+    private CloudinaryService cloudinaryService;
 
     public Document uploadDocument(Long customerId, String docType, MultipartFile file) throws IOException {
 
         Customer customer = customerRepo.findById(customerId)
                 .orElseThrow(() -> new RuntimeException("Customer not found"));
 
-        // Dynamic project path
-        String uploadDir = System.getProperty("user.dir") + "/uploads/";
+        Map result = cloudinaryService.uploadFile(file);
 
-        // Create folder if not exists
-        File dir = new File(uploadDir);
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
+        String fileUrl = result.get("secure_url").toString();
+        String publicId = result.get("public_id").toString();
 
-        // Unique file name
-        String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-        String filePath = uploadDir + fileName;
-
-        // Save file
-        file.transferTo(new File(filePath));
-
-        // Save in DB
         Document doc = new Document();
+
         doc.setDocType(docType);
-        doc.setFileName(fileName);
-        doc.setFilePath(filePath);
+        doc.setFileName(file.getOriginalFilename());
+        doc.setFileUrl(fileUrl);
+        doc.setPublicId(publicId);
         doc.setCustomer(customer);
 
         return documentRepo.save(doc);
