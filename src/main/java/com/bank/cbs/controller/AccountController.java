@@ -9,6 +9,7 @@ import com.bank.cbs.entity.Account;
 import com.bank.cbs.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -32,4 +33,11 @@ public class AccountController {
     public Double getBalance(@PathVariable Long accountId) {
         return service.getBalance(accountId);
     }
+
+    @GetMapping("/customer/{customerId}")
+    public List<Account> getAccountsByCustomerId(@PathVariable Long customerId)
+    {
+        return service.getAccountsByCustomerId(customerId);
+    }
+
 }

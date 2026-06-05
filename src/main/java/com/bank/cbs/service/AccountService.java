@@ -6,6 +6,7 @@ import com.bank.cbs.repository.AccountRepository;
 import com.bank.cbs.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 import java.util.Random;
 
@@ -53,5 +54,10 @@ public class AccountService {
         Account account = accountRepo.findById(accountId).orElseThrow();
 
         return account.getBalance();
+    }
+
+    public List<Account> getAccountsByCustomerId(Long customerId)
+    {
+        return accountRepo.findByCustomerCustomerId(customerId);
     }
 }
