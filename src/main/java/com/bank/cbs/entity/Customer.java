@@ -16,10 +16,10 @@ public class Customer {
     private String firstName;
     private String lastName;
 
-    @Column(unique = true)
+    //@Column(unique = true)
     private String mobile;
 
-    @Column(unique = true)
+    //@Column(unique = true)
     private String email;
 
     private String dateOfBirth;
